@@ -1,0 +1,68 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Home</span>
+      <div fxFlex fxLayout fxLayoutAlign="end">
+        <button (click)="addEmployee()" mat-icon-button class="example-icon">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="onlogout()" mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="emp_id">
+    <th mat-header-cell *matHeaderCellDef>employee id</th>
+    <td mat-cell *matCellDef="let element">{{ element.emp_id }}</td>
+  </ng-container>
+  <ng-container matColumnDef="first name">
+    <th mat-header-cell *matHeaderCellDef>First name</th>
+    <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="last name">
+    <th mat-header-cell *matHeaderCellDef>last name</th>
+    <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="company">
+    <th mat-header-cell *matHeaderCellDef>company</th>
+    <td mat-cell *matCellDef="let element">{{ element.company }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="mobile">
+    <th mat-header-cell *matHeaderCellDef>mobile no.</th>
+    <td mat-cell *matCellDef="let element">{{ element.mobile }}</td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="delete(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>edit</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="edit(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator
+  #paginator
+  [pageSize]="2"
+  [pageSizeOptions]="[1, 2, 3]"
+  showFirstLastButtons
+></mat-paginator>

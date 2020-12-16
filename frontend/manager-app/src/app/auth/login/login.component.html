@@ -1,0 +1,43 @@
+<section class="regsiter-form">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error>Email is invaild</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+      />
+      <mat-icon matSuffix>visibility_off</mat-icon>
+      <mat-hint>Should be atlest 6 character long </mat-hint>
+      <mat-error>Should be atlest 6 character long</mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="loginRequestError">Unable to log in with provided credentials.</mat-error>
+    <a [routerLink]=" ['/register'] "> Create Manager Account!</a>
+    <button type="submit" mat-raised-button color="primary">Login</button>
+
+  </form>
+</section>

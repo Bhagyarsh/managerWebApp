@@ -1,0 +1,140 @@
+<mat-dialog-content class="mat-typography">
+  <h3>{{dialogstring}}</h3>
+
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    [formGroup]="employeeform"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Empoyee Id</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="employee id"
+        name="emp_id"
+        required
+        formControlName="emp_id"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error>Email is invaild</mat-error>
+      <mat-error> Employee with this id address already exists.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        email
+        required
+        formControlName="email"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error>Email is invaild</mat-error>
+      <mat-error> user with this email address already exists.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name </mat-label>
+      <input
+        matInput
+        placeholder="First name"
+        required
+        formControlName="first_name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name </mat-label>
+      <input
+        matInput
+        placeholder="Last name"
+        formControlName="last_name"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>company</mat-label>
+      <input
+        matInput
+        placeholder="Company"
+        formControlName="company"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" required formControlName="dob" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker color="primary"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Address </mat-label>
+      <textarea matInput required formControlName="address"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="City" formControlName="city" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mobile no</mat-label>
+      <input
+        type="number"
+        minlength="10"
+        maxlength="10"
+        matInput
+        placeholder="Mobile no"
+        formControlName="mobile"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        formControlName="password"
+        required
+        minlength="6"
+      />
+      <mat-icon matSuffix>visibility_off</mat-icon>
+      <mat-hint>Should be atlest 6 character long </mat-hint>
+      <mat-error>Should be atlest 6 character long</mat-error>
+    </mat-form-field>
+
+    <!-- <button type="submit" mat-raised-button color="primary">Register</button> -->
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="passdata.add" align="end">
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="onSubmit()"
+    cdkFocusInitial
+  >
+    Add
+  </button>
+</mat-dialog-actions>
+<mat-dialog-actions *ngIf="passdata.delete" align="end">
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="delete()"
+    cdkFocusInitial
+  >
+    delete
+  </button>
+</mat-dialog-actions>
+<mat-dialog-actions *ngIf="passdata.edit" align="end">
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="edit()"
+    cdkFocusInitial
+  >
+    Edit
+  </button>
+</mat-dialog-actions>

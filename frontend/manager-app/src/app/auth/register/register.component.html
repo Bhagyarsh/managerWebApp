@@ -1,0 +1,79 @@
+<section class="regsiter-form">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    autocomplete
+    (ngSubmit)="onSubmit(f)"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error>Email is invaild</mat-error>
+      <mat-error> user with this email address already exists.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name </mat-label>
+      <input
+        matInput
+        placeholder="First name"
+        ngModel
+        name="first_name"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name </mat-label>
+      <input
+        matInput
+        placeholder="Last name"
+        ngModel
+        name="last_name"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>company</mat-label>
+      <input matInput placeholder="Company" ngModel name="company" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" required ngModel name="dob" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker color="primary"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Address </mat-label>
+      <textarea matInput required ngModel name="address"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+      />
+      <mat-icon matSuffix>visibility_off</mat-icon>
+      <mat-hint>Should be atlest 6 character long </mat-hint>
+      <mat-error>Should be atlest 6 character long</mat-error>
+    </mat-form-field>
+ 
+    <a [routerLink]="['']"> Already have an Account Login!!</a>
+    <button type="submit" mat-raised-button color="primary">Register</button>
+  </form>
+  <div class="bottom-spacing"></div>
+</section>
