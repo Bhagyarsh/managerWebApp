@@ -7,7 +7,7 @@ from .pagination import EmployeeListOffsetPagination
 from .serializers import EmployeeSerialize, EmployeeListSerialize
 from rest_framework import permissions
 from employee.models import Employee
-from manager.models import Manager
+from ManagerModel.models import Manager
 
 
 class EmployeeCreateAPIView(generics.CreateAPIView):

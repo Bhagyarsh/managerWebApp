@@ -1,5 +1,5 @@
 from django.db import models
-from manager.models import Manager
+from ManagerModel.models import Manager
 # Create your models here.
 
 

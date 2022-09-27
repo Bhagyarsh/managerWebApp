@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'accounts',
-    'manager',
-    'employee'
+    'employee',
+    "ManagerModel"
 
 
 ]

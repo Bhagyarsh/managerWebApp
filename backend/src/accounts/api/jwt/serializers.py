@@ -6,7 +6,7 @@ from rest_framework_jwt.settings import api_settings
 import datetime
 from django.utils import timezone
 from rest_framework.views import exception_handler
-from manager.models import Manager
+from ManagerModel.models import Manager
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
